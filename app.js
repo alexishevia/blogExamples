@@ -1,6 +1,9 @@
 var express = require('express');
 var mysql = require('mysql');
 var app = express();
+
+// This is for demonstration purposes only.
+// You should NEVER store your db credentials on a plain-text file
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
