@@ -8,4 +8,10 @@ Vagrant.configure("2") do |config|
 
   # use bridged networking
   config.vm.network :public_network
+
+  # provision with Puppet stand alone
+    config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = "puppet/manifests"
+    puppet.module_path = "puppet/modules"
+  end
 end
