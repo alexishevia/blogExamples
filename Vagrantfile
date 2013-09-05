@@ -10,8 +10,11 @@ Vagrant.configure("2") do |config|
   config.vm.network :public_network
 
   # provision with Puppet stand alone
-    config.vm.provision :puppet do |puppet|
+  config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "puppet/manifests"
     puppet.module_path = "puppet/modules"
   end
+
+  # forward ports
+  config.vm.network :forwarded_port, host: 3000, guest: 3000
 end
