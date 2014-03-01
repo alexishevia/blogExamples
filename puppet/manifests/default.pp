@@ -1,18 +1,23 @@
+Exec {
+  path => ['/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/local/bin']
+}
+
 # --- Preinstall Stage ---#
 
 stage { 'preinstall':
   before => Stage['main']
 }
 
-# Define the apt_get_update class
-class apt_get_update {
-  exec { 'apt-get -y update':
-    path => ['/usr/sbin', '/usr/bin', '/sbin', '/bin']
+# Define the install_packages class
+class install_packages {
+  package { ['curl', 'build-essential', 'libfontconfig1', 'python',
+             'g++', 'make', 'wget', 'tar', 'mc', 'htop']:
+    ensure => present
   }
 }
 
-# Declare (invoke) the apt_get_update
-class { 'apt_get_update':
+# Declare (invoke) install_packages
+class { 'install_packages':
   stage => preinstall
 }
 
@@ -24,8 +29,6 @@ class { 'nodejs':
 
 # --- MySQL --- #
 
-class { 'mysql': }
-
-class { 'mysql::server':
-  config_hash => { 'root_password' => 'foo' }
+class { '::mysql::server':
+  root_password => 'foo'
 }

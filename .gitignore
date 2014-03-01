@@ -2,3 +2,4 @@
 *.swo
 .vagrant
 node_modules
+puppet/modules

@@ -1,0 +1,5 @@
+forge "http://forge.puppetlabs.com"
+
+mod "puppetlabs/stdlib", "4.1.0"
+mod "willdurand/nodejs", "1.6.1"
+mod "puppetlabs/mysql", "2.2.1"
