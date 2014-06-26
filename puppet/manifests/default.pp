@@ -1,3 +1,5 @@
+$node_binaries_path = '/usr/local/node/node-default/bin'
+
 Exec {
   path => ['/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/local/bin',
           'language-pack-UTF-8']
@@ -27,6 +29,12 @@ class { 'install_packages':
 class { 'nodejs':
   version => 'v0.10.29'
 }
+
+file { '/usr/bin/node':
+  ensure => 'link',
+  target => "${node_binaries_path}/node",
+}
+
 
 # --- MySQL --- #
 
