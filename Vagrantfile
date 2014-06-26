@@ -1,30 +1,43 @@
-Vagrant.configure("2") do |config|
+require 'json'
+
+# ------------------------------ #
+#         Config Values
+# ------------------------------ #
+#
+# If you wish to override the default config values, create a JSON
+# file called Vagrantfile.json on the same folder as this file
+#
+
+configValues = {
   # box to build from
-  config.vm.box = "Puppetlabs Ubuntu 12.04.2 x86_64, VBox 4.2.10, No Puppet or Chef"
+  "box" => "Official Ubuntu 14.04 daily Cloud Image amd64 " +
+           "(Development release, No Guest Additions)",
 
   # the url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system
-  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box"
+  "box_url" => "https://cloud-images.ubuntu.com/vagrant/trusty/"    +
+               "current/trusty-server-cloudimg-amd64-vagrant-disk1" +
+               ".box",
 
-  # forward ports
-  config.vm.network :forwarded_port, host: 3000, guest: 3000
+  # private IP address for the VM
+  "ip" => '192.168.60.2'
+}
 
-  config.vm.provider :virtualbox do |vb|
-    # This allows symlinks to be created within the /vagrant root directory,
-    # which is something librarian-puppet needs to be able to do. This might
-    # be enabled by default depending on what version of VirtualBox is used.
-    vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+if File.exist?('./Vagrantfile.json')
+  begin
+    configValues.merge!(JSON.parse(File.read('./Vagrantfile.json')))
+  rescue JSON::ParserError => e
+    puts "Error Parsing Vagrantfile.json", e.message
+    exit 1
   end
+end
 
-  # install puppet and librarian-puppet
-  config.vm.provision :shell, :path => "shell/install-puppet.sh"
-  config.vm.provision :shell, :path => "shell/install-librarian-puppet.sh"
+# ------------------------------ #
+#        Start Vagrant
+# ------------------------------ #
 
-  # provision with Puppet stand alone
-  config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "puppet/manifests"
-    puppet.manifest_file = "default.pp"
-    puppet.options = "--hiera_config /etc/hiera.yaml"
-  end
-
+Vagrant.configure("2") do |config|
+  config.vm.box = configValues["box"]
+  config.vm.box_url = configValues["box_url"]
+  config.vm.network "private_network", ip: configValues['ip']
 end

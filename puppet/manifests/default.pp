@@ -1,5 +1,6 @@
 Exec {
-  path => ['/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/local/bin']
+  path => ['/usr/sbin', '/usr/bin', '/sbin', '/bin', '/usr/local/bin',
+          'language-pack-UTF-8']
 }
 
 # --- Preinstall Stage ---#
@@ -24,7 +25,7 @@ class { 'install_packages':
 # --- NodeJS --- #
 
 class { 'nodejs':
-  version => 'v0.10.5'
+  version => 'v0.10.29'
 }
 
 # --- MySQL --- #
