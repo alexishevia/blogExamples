@@ -44,4 +44,20 @@ Vagrant.configure("2") do |config|
   config.vm.box_url = configValues["box_url"]
   config.vm.network "private_network", ip: configValues['ip']
   config.vm.hostname = configValues['hostname']
+
+  config.vm.provider :virtualbox do |vb|
+    # This allows symlinks to be created within the /vagrant dir
+    vb.customize ["setextradata", :id,
+                  "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+  end
+
+  # install puppet and librarian-puppet
+  config.vm.provision :shell, :path => "shell/install-puppet.sh"
+  config.vm.provision :shell, :path => "shell/install-librarian-puppet.sh"
+
+  # provision with Puppet stand alone
+  config.vm.provision :puppet do |puppet|
+    puppet.manifests_path = "puppet/manifests"
+    puppet.manifest_file = "default.pp"
+  end
 end
