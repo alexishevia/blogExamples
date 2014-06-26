@@ -20,7 +20,10 @@ configValues = {
                ".box",
 
   # private IP address for the VM
-  "ip" => '192.168.60.2'
+  "ip" => '192.168.60.2',
+
+  # hostname for the VM
+  "hostname" => "dev.nodejs"
 }
 
 if File.exist?('./Vagrantfile.json')
@@ -40,4 +43,5 @@ Vagrant.configure("2") do |config|
   config.vm.box = configValues["box"]
   config.vm.box_url = configValues["box_url"]
   config.vm.network "private_network", ip: configValues['ip']
+  config.vm.hostname = configValues['hostname']
 end
