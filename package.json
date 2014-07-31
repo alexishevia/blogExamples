@@ -1,0 +1,12 @@
+{
+  "name": "FooBarInc",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {},
+  "repository": "https://github.com/alexishevia/blogExamples/tree/dynamic_requirejs",
+  "author": "Alexis Hevia",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-requirejs": "0.4.4"
+  }
+}

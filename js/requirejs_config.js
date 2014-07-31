@@ -3,7 +3,9 @@ require.config({
   paths: {
     'underscore': 'vendor/underscore',
     'jquery': 'vendor/jquery',
-    'd3': 'vendor/d3',
-    'jstree': 'vendor/jstree'
+    'jstree': 'vendor/jstree',
+    // uncomment the following lines to use the optimized files:
+    'app': '../.tmp/app',
+    'renderers': '../.tmp/renderers'
   }
 });

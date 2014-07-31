@@ -1,0 +1,1 @@
+define("renderers/list",["underscore"],function(e){function t(r){var i=e.map(r,function(e){return n(e)});return i=i.concat(e.flatten(e.map(r,function(e){return t(e.children)}))),i}function n(e){return $("<li>").html(e.text)}return{render:function(e){return $("<ul>").html(t(e))}}});

@@ -1,6 +1,6 @@
 define([
-  'underscore', 'jquery', 'organization_data', 'renderers/list', 'renderers/chart'
-], function(_, $, data, ListRenderer, ChartRenderer){
+  'underscore', 'jquery', 'organization_data'
+], function(_, $, data){
 
   var App = function(el){
     this.$el = $(el);
@@ -21,12 +21,15 @@ define([
       '<div class="display-options">' +
         '<div><a href="#list">Display employee list</a></div>' +
         '<div><a href="#chart">Display organizational chart</a></div>' +
-      '</div>').append(this.renderContent());
+      '</div>');
+     this.renderContent();
   };
 
   App.prototype.renderContent = function(){
-    var renderer = { list: ListRenderer, chart: ChartRenderer }[this.display];
-    return $('<div>').html(renderer.render(data));
+    // dynamically load renderer
+    require([ 'renderers/' + this.display ], _.bind(function(renderer){
+      this.$el.append(renderer.render(data));
+    }, this));
   };
 
   return App;
