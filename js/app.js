@@ -9,7 +9,7 @@ define([
     this.display = 'list';
 
     // listen for link clicks, and update the `display` value accordingly
-    this.$el.on('click', 'a', _.bind(function(evt){
+    this.$el.on('click', '.display-options a', _.bind(function(evt){
       evt.preventDefault();
       this.display = $(evt.currentTarget).attr('href').replace('#', '');
       this.render();
@@ -18,7 +18,7 @@ define([
 
   App.prototype.render = function(){
     this.$el.html(
-      '<div>' +
+      '<div class="display-options">' +
         '<div><a href="#list">Display employee list</a></div>' +
         '<div><a href="#chart">Display organizational chart</a></div>' +
       '</div>').append(this.renderContent());

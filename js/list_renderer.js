@@ -8,14 +8,14 @@ define(['underscore'], function(_){
 
     // get people from levels below
     result = result.concat(_.flatten(_.map(level, function(person){
-      return renderRecursive(person.subordinates);
+      return renderRecursive(person.children);
     })));
 
     return result;
   };
 
   function renderPerson(person){
-    return $('<li>').html(person.name + ', ' + person.position);
+    return $('<li>').html(person.text);
   };
 
   return {

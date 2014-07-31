@@ -1,7 +1,11 @@
-define(function(){
+define(['jstree'], function(){
   return {
     render: function(data){
-      return 'CHART RENDERER';
+      return $('<div>').jstree({
+        core: {
+          data: data
+        }
+      });
     }
   };
 });

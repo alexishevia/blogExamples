@@ -1,37 +1,32 @@
 define(function(){
   return [
     {
-      "name": "John Smith",
-      "position": "President",
-      "subordinates": [
+      "text": "John Smith, President",
+      "children": [
         {
-          "name": "Belinda Wilkins",
-          "position": "VP Account Services",
-          "subordinates": [
+          "text": "Belinda Wilkins, VP Account Services",
+          "children": [
             {
-              "name": "Effie Normanson",
-              "position": "Account Supervisor",
-              "subordinates": [
-                { "name": "Zara Lynn", "position": "Account Executive" }
+              "text": "Effie Normanson, Account Supervisor",
+              "children": [
+                { "text": "Zara Lynn, Account Executive" }
               ]
             },
-            { "name": "Cece Jefferson", "position": "Account Supervisor" }
+            { "text": "Cece Jefferson, Account Supervisor" }
           ]
         },
         {
-          "name": "Willa Marley",
-          "position": "VP Creative Services",
-          "subordinates": [
-            { "name": "Jenn Granville", "position": "Art/Copy" },
-            { "name": "Nicholas Jacobs", "position": "Production" }
+          "text": "Willa Marley, VP Creative Services",
+          "children": [
+            { "text": "Jenn Granville, Art/Copy" },
+            { "text": "Nicholas Jacobs, Production" }
           ]
         },
         {
-          "name": "Cassius Spalding",
-          "position": "VP Marketing Services",
-          "subordinates": [
-            { "name": "Alban Donalds", "position": "Media" },
-            { "name": "Elly Parsons", "position": "Research" }
+          "text": "Cassius Spalding, VP Marketing Services",
+          "children": [
+            { "text": "Alban Donalds, Media" },
+            { "text": "Elly Parsons, Research" }
           ]
         }
       ]
