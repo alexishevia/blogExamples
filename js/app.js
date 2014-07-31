@@ -1,5 +1,5 @@
 define([
-  'underscore', 'jquery', 'organization_data', 'list_renderer', 'chart_renderer'
+  'underscore', 'jquery', 'organization_data', 'renderers/list', 'renderers/chart'
 ], function(_, $, data, ListRenderer, ChartRenderer){
 
   var App = function(el){
