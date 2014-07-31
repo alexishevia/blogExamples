@@ -2,6 +2,8 @@
 module.exports = function(grunt){
 
   grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.initConfig({
 
@@ -16,8 +18,33 @@ module.exports = function(grunt){
       main: {
         options: {
           name: 'app',
-          out: '.tmp/app.js'
+          out: 'dist/js/app.js'
         }
+      }
+    },
+
+    clean: {
+      build: ['dist']
+    },
+
+    copy: {
+      build: {
+        files: [
+          {
+            expand: true,
+            cwd: './styles',
+            src: ['**/*.!(coffee)'],
+            dest: 'dist/styles'
+          },
+          {
+            src: 'index.html',
+            dest: 'dist/index.html'
+          },
+          {
+            src: 'js/requirejs_config.js',
+            dest: 'dist/js/requirejs_config.js'
+          }
+        ]
       }
     }
 
@@ -37,7 +64,7 @@ module.exports = function(grunt){
       grunt.config('requirejs.' + rendererName, {
         options: {
           name: 'renderers/' + rendererName,
-          out: '.tmp/renderers/' + rendererName + '.js',
+          out: 'dist/js/renderers/' + rendererName + '.js',
           exclude: modulesToExclude
         }
       });
@@ -45,4 +72,6 @@ module.exports = function(grunt){
 
     grunt.task.run(['requirejs']);
   });
+
+  grunt.registerTask('build', ['clean', 'copy', 'optimize']);
 };

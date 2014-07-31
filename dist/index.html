@@ -1,0 +1,19 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>FooBar Inc</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js"></script>
+  <script src="js/requirejs_config.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/jstree.css" />
+</head>
+<body>
+  <h1>FooBar Inc</h2>
+  <div id="appContainer"></div>
+  <script>
+    require(['app'], function(App){
+      var app = new App(document.getElementById('appContainer'));
+      app.render();
+    });
+  </script>
+</body>
+</html>
