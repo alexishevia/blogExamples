@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "An Awesome Post",
+    "content": "This is an awesome post."
+  },
+  {
+    "id": 2,
+    "name": "Another Awesome Post",
+    "content": "This is another awesome post."
+  },
+  {
+    "id": 3,
+    "name": "A Popular Post",
+    "content": "This is a popular post."
+  },
+  {
+    "id": 4,
+    "name": "Another Popular Post",
+    "content": "This is another popular post."
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "name": "IsomorphicExample",
+  "version": "0.0.1",
+  "homepage": "https://github.com/alexishevia/blogExamples",
+  "authors": [
+    "Alexis Hevia <hevia.alexis@gmail.com>"
+  ],
+  "description": "an example isomorphic app with Backbone and React",
+  "main": "public/js/app.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "react": "0.11.1",
+    "supermodel": "0.0.4",
+    "backbone": "1.1.2",
+    "underscore": "1.6.0"
+  }
+}
