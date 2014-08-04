@@ -3,17 +3,17 @@ var _ = require('underscore');
 var requirejs = require('requirejs');
 var async = require('async');
 var request = require('request');
-var React = require('react');
 var UriTemplate = require('uri-templates');
 
 requirejs.config({
-  baseUrl: path.join(__dirname, '/.tmp'),
+  baseUrl: path.join(__dirname, '../.tmp'),
   nodeRequire: require,
 
   paths: {
     'underscore': '../bower_components/underscore/underscore',
     'backbone': '../bower_components/backbone/backbone',
-    'supermodel': '../bower_components/supermodel/supermodel.min'
+    'supermodel': '../bower_components/supermodel/supermodel.min',
+    'react': '../bower_components/react/react-with-addons'
   },
 
   shim: {
@@ -30,6 +30,8 @@ requirejs.config({
     }
   },
 });
+
+var React = requirejs('react');
 
 function parseRoutes(routes){
   var parsed = {};
@@ -72,8 +74,9 @@ function routeWasGreedilyAccepted(template, url){
            !url.match(rootURLRegex) );
 }
 
-function getURL(urlName, urlOpts){
-  var url = ROUTES[urlName].fillFromObject(urlOpts || {});
+function getURL(urlName, options){
+  options = _.extend({ urlParams: {} }, options);
+  var url = ROUTES[urlName].fillFromObject(options.urlParams);
   return url;
 }
 
@@ -167,4 +170,3 @@ module.exports = {
   }
 
 };
-

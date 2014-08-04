@@ -1,25 +1,28 @@
 /** @jsx React.DOM */
 
 define([
-  'react'
-], function(React){
+  'react',
+  'mixins/backbone_binding'
+], function(React, BackboneBinding){
 
   return React.createClass({
     displayName: 'Post',
 
-    getInitialState: function(){
-      var post = {};
-      if(this.props.post && this.props.post.toJSON){
-        post = this.props.post.toJSON();
-      }
-      return { post: post };
+    mixins: [
+      new BackboneBinding({ model: 'post', events: {
+        'change': 'onPostChange'
+      }})
+    ],
+
+    onPostChange: function(){
+      this.forceUpdate();
     },
 
     render: function(){
       return (
         <div className="post">
-          <h1>{ this.state.post.name }</h1>
-          <div>{ this.state.post.content }</div>
+          <h1>{ this.props.post.get('name') }</h1>
+          <div>{ this.props.post.get('content') }</div>
         </div>
       )
     },
@@ -35,6 +38,7 @@ define([
     getPostUrl: function(post){
       return this.props.getURL('show_post', {id: post.id});
     }
+
   });
 
 });

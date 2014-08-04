@@ -19,10 +19,13 @@ module.exports = function(grunt) {
     copy: {
       dev: {
         files: [
+          { src: 'node_modules/requirejs/require.js', dest: '.tmp/require.js' },
           { src: 'routes.js', dest: '.tmp/routes.js' },
-          { expand: true, src: ['controllers/**/*.js'], dest: '.tmp' },
-          { expand: true, src: ['collections/**/*.js'], dest: '.tmp' },
-          { expand: true, src: ['models/**/*.js'], dest: '.tmp' }
+          { expand: true, cwd: 'ui', src: '**/*', dest: '.tmp' },
+          { expand: true, src: 'controllers/**/*.js', dest: '.tmp' },
+          { expand: true, src: 'collections/**/*.js', dest: '.tmp' },
+          { expand: true, src: 'models/**/*.js', dest: '.tmp' },
+          { expand: true, src: 'mixins/**/*.js', dest: '.tmp' }
         ]
       }
     },
@@ -47,7 +50,8 @@ module.exports = function(grunt) {
         tasks: ['newer:react:dev']
       },
       js: {
-        files: ['controllers/**/*.js', 'collections/**/*.js', 'models/**/*.js'],
+        files: ['controllers/**/*.js', 'collections/**/*.js', 'models/**/*.js',
+          'ui/**/*', 'mixins/**/*.js'],
         tasks: ['newer:copy:dev']
       }
 
@@ -76,15 +80,13 @@ module.exports = function(grunt) {
       }
     });
 
-    console.log('OPTIONS:', JSON.stringify(options));
-
     done = this.async();
-    serverArgs = ['app.js', 'start'];
+    serverArgs = ['backend/app.js', 'start'];
 
     if(options.respawn){
       // launch app server with supervisor
       cmd = 'supervisor';
-      serverArgs.unshift('--watch', '.tmp', '--');
+      serverArgs.unshift('--watch', '.tmp', '--watch', 'backend', '--');
     }
     else{
       // launch app with node
@@ -92,6 +94,7 @@ module.exports = function(grunt) {
     }
 
     // launch app server
+    console.log(cmd, JSON.stringify(serverArgs));
     server = grunt.util.spawn({
       cmd: cmd,
       args: serverArgs,

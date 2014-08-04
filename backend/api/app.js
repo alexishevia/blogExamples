@@ -17,7 +17,12 @@ fs.readFile(file, 'utf8', function (err, data) {
 });
 
 router.get('/posts', function(req,res){
-  res.json([fakeData[0], fakeData[2]]);
+  if(req.query.filter === 'popular'){
+    res.json([fakeData[2], fakeData[3]]);
+  }
+  else {
+    res.json([fakeData[0], fakeData[2]]);
+  }
 });
 
 router.get('/posts/:id', function(req,res){
