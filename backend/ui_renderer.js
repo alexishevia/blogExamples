@@ -5,8 +5,15 @@ var async = require('async');
 var request = require('request');
 var UriTemplate = require('uri-templates');
 
+var baseUrl;
+if(process.env.NODE_ENV === 'development'){
+  baseUrl = path.join(__dirname, '../.tmp');
+} else {
+  baseUrl = path.join(__dirname, '../dist');
+}
+
 requirejs.config({
-  baseUrl: path.join(__dirname, '../.tmp'),
+  baseUrl: baseUrl,
   nodeRequire: require,
 
   paths: {

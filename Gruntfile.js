@@ -14,7 +14,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     clean: {
-      dev: ['.tmp/**']
+      dev: ['.tmp/**'],
+      prod: ['dist/**']
     },
 
     copy: {
@@ -28,7 +29,15 @@ module.exports = function(grunt) {
           { expand: true, src: 'models/**/*.js', dest: '.tmp' },
           { expand: true, src: 'mixins/**/*.js', dest: '.tmp' }
         ]
-      }
+      },
+      prod: {
+        files: [
+          { src: 'node_modules/requirejs/require.js', dest: 'dist/require.js' },
+          { src: 'routes.js', dest: 'dist/routes.js' },
+          { src: 'ui/styles.css', dest: 'dist/styles.css' },
+          { src: 'ui/requirejs_config.js', dest: 'dist/requirejs_config.js' }
+        ]
+      },
     },
 
     react: {
@@ -69,7 +78,7 @@ module.exports = function(grunt) {
       main: {
         options: {
           name: 'app',
-          out: '.tmp/app.js'
+          out: 'dist/app.js'
         }
       }
     },
@@ -151,7 +160,7 @@ module.exports = function(grunt) {
       grunt.config('requirejs.' + controllerName, {
         options: {
           name: 'controllers/' + controllerName,
-          out: '.tmp/controllers/' + controllerName + '.js',
+          out: 'dist/controllers/' + controllerName + '.js',
           exclude: modulesToExclude
         }
       });
@@ -169,7 +178,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('prod', [
     'clean:dev',
+    'clean:prod',
     'copy:dev',
+    'copy:prod',
     'react',
     'myRequireJs'
   ]);

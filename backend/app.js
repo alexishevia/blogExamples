@@ -3,17 +3,20 @@ var _ = require('underscore');
 var express = require('express');
 var app = express();
 
-// mount '.tmp' as '/public'
-app.use('/public', express.static(path.resolve(__dirname, '../.tmp')));
-
-// mount bower_components and node_modules on development mode
 if(app.get('env') === 'development'){
+  // mount bower_components, node_modules and .tmp folders
   _({
     '../bower_components': '/bower_components',
-    '../node_modules': '/node_modules'
+    '../node_modules': '/node_modules',
+    '../.tmp': '/public'
   }).each(function(mountPoint, folder){
     app.use(mountPoint, express.static(path.resolve(__dirname, folder)));
   });
+}
+
+else {
+  // mount 'dist' as '/public'
+  app.use('/public', express.static(path.resolve(__dirname, '../dist')));
 }
 
 // the API will be handled by a different express app
