@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "description": "an example isomorphic app with Backbone and React",
+  "engines": {
+    "node": "0.10.28"
+  },
   "scripts": {
     "start": "grunt dev"
   },
