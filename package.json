@@ -17,7 +17,8 @@
     "request": "2.39.0",
     "uri-templates": "0.1.5",
     "jquery": "2.1.1",
-    "ejs": "1.0.0"
+    "ejs": "1.0.0",
+    "backbone": "1.1.2"
   },
   "devDependencies": {
     "grunt": "0.4.5",

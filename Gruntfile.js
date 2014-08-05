@@ -27,7 +27,9 @@ module.exports = function(grunt) {
           { expand: true, src: 'controllers/**/*.js', dest: '.tmp' },
           { expand: true, src: 'collections/**/*.js', dest: '.tmp' },
           { expand: true, src: 'models/**/*.js', dest: '.tmp' },
-          { expand: true, src: 'mixins/**/*.js', dest: '.tmp' }
+          { expand: true, src: 'mixins/**/*.js', dest: '.tmp' },
+          { src: 'bower_components/underscore/underscore.js', dest: '.tmp/underscore.js' },
+          { src: 'bower_components/react/react-with-addons.js', dest: '.tmp/react.js' }
         ]
       },
       prod: {
@@ -35,7 +37,9 @@ module.exports = function(grunt) {
           { src: 'node_modules/requirejs/require.js', dest: 'dist/require.js' },
           { src: 'routes.js', dest: 'dist/routes.js' },
           { src: 'ui/styles.css', dest: 'dist/styles.css' },
-          { src: 'ui/requirejs_config.js', dest: 'dist/requirejs_config.js' }
+          { src: 'ui/requirejs_config.js', dest: 'dist/requirejs_config.js' },
+          { src: 'bower_components/underscore/underscore.js', dest: 'dist/underscore.js' },
+          { src: 'bower_components/react/react-with-addons.js', dest: 'dist/react.js' }
         ]
       },
     },

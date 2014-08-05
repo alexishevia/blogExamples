@@ -5,7 +5,7 @@ var async = require('async');
 var request = require('request');
 var UriTemplate = require('uri-templates');
 
-var baseUrl;
+var baseUrl, paths;
 if(process.env.NODE_ENV === 'development'){
   baseUrl = path.join(__dirname, '../.tmp');
 } else {
@@ -14,23 +14,7 @@ if(process.env.NODE_ENV === 'development'){
 
 requirejs.config({
   baseUrl: baseUrl,
-  nodeRequire: require,
-
-  paths: {
-    'underscore': '../bower_components/underscore/underscore',
-    'backbone': '../bower_components/backbone/backbone',
-    'react': '../bower_components/react/react-with-addons'
-  },
-
-  shim: {
-    'underscore': {
-      exports: '_'
-    },
-    'backbone': {
-      deps: ['jquery', 'underscore'],
-      exports: 'Backbone'
-    }
-  },
+  nodeRequire: require
 });
 
 var React = requirejs('react');
