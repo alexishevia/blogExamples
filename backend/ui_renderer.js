@@ -12,7 +12,6 @@ requirejs.config({
   paths: {
     'underscore': '../bower_components/underscore/underscore',
     'backbone': '../bower_components/backbone/backbone',
-    'supermodel': '../bower_components/supermodel/supermodel.min',
     'react': '../bower_components/react/react-with-addons'
   },
 
@@ -23,10 +22,6 @@ requirejs.config({
     'backbone': {
       deps: ['jquery', 'underscore'],
       exports: 'Backbone'
-    },
-    'supermodel': {
-      deps: ['backbone'],
-      exports: 'Supermodel'
     }
   },
 });

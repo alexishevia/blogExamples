@@ -2,7 +2,7 @@
 
 define([
   'react',
-  'underscore',
+  'underscore'
 ], function(React, _){
 
   return function(options){

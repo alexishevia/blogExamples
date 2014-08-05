@@ -6,8 +6,7 @@ requirejs.config({
     'history': '../bower_components/history.js/scripts/bundled/html4+html5/native.history',
     'underscore': '../bower_components/underscore/underscore',
     'uri-templates': '../node_modules/uri-templates/uri-templates',
-    'backbone': '../bower_components/backbone/backbone',
-    'supermodel': '../bower_components/supermodel/supermodel.min'
+    'backbone': '../bower_components/backbone/backbone'
   },
   shim: {
     'uri-templates': {
@@ -22,10 +21,6 @@ requirejs.config({
     'backbone': {
       deps: ['jquery', 'underscore'],
       exports: 'Backbone'
-    },
-    'supermodel': {
-      deps: ['backbone'],
-      exports: 'Supermodel'
     }
   }
 });

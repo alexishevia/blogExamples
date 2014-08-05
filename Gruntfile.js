@@ -7,6 +7,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-react');
   grunt.loadNpmTasks('grunt-newer');
 
@@ -55,7 +56,23 @@ module.exports = function(grunt) {
         tasks: ['newer:copy:dev']
       }
 
-    }
+    },
+
+    requirejs: {
+      options: {
+        baseUrl: '.tmp',
+        mainConfigFile: 'ui/requirejs_config.js',
+        optimize: 'uglify2',
+        preserveLicenseComments: false,
+        removeCombined: true
+      },
+      main: {
+        options: {
+          name: 'app',
+          out: '.tmp/app.js'
+        }
+      }
+    },
 
   });
 
@@ -116,11 +133,45 @@ module.exports = function(grunt) {
     });
   });
 
+  /* -- 'myRequireJs' task -- */
+  grunt.registerTask('myRequireJs', function(){
+    // this modules should already be included on app.js
+    var modulesToExclude = [
+      'jquery', 'react', 'history', 'underscore', 'uri-templates'
+    ];
+
+    // scan all controllers
+    var controllerNames = grunt.file.expand(
+                            {cwd: '.tmp/controllers'}, '**/*.js');
+
+    // add a requirejs task for each controller
+    controllerNames.map(function(controllerName){
+      var controllerName = controllerName.replace('.js', '');
+
+      grunt.config('requirejs.' + controllerName, {
+        options: {
+          name: 'controllers/' + controllerName,
+          out: '.tmp/controllers/' + controllerName + '.js',
+          exclude: modulesToExclude
+        }
+      });
+    });
+
+    grunt.task.run(['requirejs']);
+  });
+
   grunt.registerTask('dev', [
     'clean:dev',
     'copy:dev',
     'react',
     'start:development:3000:keepAlive:respawn'
+  ]);
+
+  grunt.registerTask('prod', [
+    'clean:dev',
+    'copy:dev',
+    'react',
+    'myRequireJs'
   ]);
 
 };
