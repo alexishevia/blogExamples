@@ -11,7 +11,6 @@
   "private": true,
   "dependencies": {
     "underscore": "1.6.0",
-    "history.js": "1.8.0",
-    "react": "0.11.1"
+    "history.js": "1.8.0"
   }
 }

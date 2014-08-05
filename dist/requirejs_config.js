@@ -2,7 +2,7 @@ requirejs.config({
   baseUrl: '/public',
   paths: {
     'jquery': '../node_modules/jquery/dist/jquery',
-    'react': '../bower_components/react/react-with-addons',
+    'react': '../node_modules/react/dist/react-with-addons',
     'history': '../bower_components/history.js/scripts/bundled/html4+html5/native.history',
     'underscore': '../bower_components/underscore/underscore',
     'uri-templates': '../node_modules/uri-templates/uri-templates',
