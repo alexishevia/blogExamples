@@ -83,11 +83,11 @@ define([
     }
 
     if(options.pushState){
-      History.pushState(null, 'Seeder - Knowledge is power.', url);
+      History.pushState(null, 'Example App', url);
       return this;
     }
     else if(options.replaceState){
-      History.replaceState(null, 'Seeder - Knowledge is power.', url);
+      History.replaceState(null, 'Example App', url);
       return this;
     }
     else {
