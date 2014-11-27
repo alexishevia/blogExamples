@@ -212,6 +212,11 @@
         }
       }
     },
+    "express-state": {
+      "version": "1.2.0",
+      "from": "express-state@>=1.2.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/express-state/-/express-state-1.2.0.tgz"
+    },
     "flux-router-component": {
       "version": "0.4.6",
       "from": "flux-router-component@>=0.4.0 <0.5.0",

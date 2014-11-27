@@ -1,15 +1,23 @@
 'use strict';
 var React = require('react');
-var ApplicationStore = require('../stores/ApplicationStore');
 var Home = require('./Home.jsx');
 var About = require('./About.jsx');
 var Nav = require('./Nav.jsx');
+var ApplicationStore = require('../stores/ApplicationStore');
+var RouterMixin = require('flux-router-component').RouterMixin;
 var FluxibleMixin = require('fluxible').Mixin;
 
 var Application = React.createClass({
-  mixins: [FluxibleMixin],
+  mixins: [RouterMixin, FluxibleMixin],
+  statics: {
+      storeListeners: [ApplicationStore]
+  },
   getInitialState: function () {
     return this.getStore(ApplicationStore).getState();
+  },
+  onChange: function () {
+      var state = this.getStore(ApplicationStore).getState();
+      this.setState(state);
   },
   render: function(){
     return (
