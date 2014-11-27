@@ -8,8 +8,8 @@ On this post I want to show how to create a fluxible-app step by step. I will be
 - create an express app (server.js). Add a middleware to render our React component.
 
 ## Using routes
-- Create <Home> and <About> Components
-- Modify the ApplicationComponent so it renders either <Home> or <About> based on the current route.
+- Create `<Home>` and `<About>` Components
+- Modify the ApplicationComponent so it renders either `<Home>` or `<About>` based on the current route.
 - Create app.js, our Fluxible-app. app.js uses a routrPlugin (with our custom defined routes), and an ApplicationStore, which holds the current route as its state.
 - Modify server.js so it creates a new context on each request, and executes the NavigateAction before rendering.
 
@@ -24,6 +24,14 @@ Note: A new ApplicationStore instance is created, and the action is immediately 
 5. ApplicationStore executes its handleNavigate() method in response to the 'CHANGE_ROUTE_SUCCESS' action. The handleNavigate() method will update the ApplicationStore state.
 6. Inside the executeAction callback, we'll create a new instance of our Application component, passing it the current context as a prop. The context, among other things, contains the ApplicationStore instance that was created on step 4.
 7. We render the Application component as a string, and send the result as our response. 
-Since the Application component gets its state from ApplicationStore, and ApplicationStore was updated when it handled the 'CHANGE_ROUTE_SUCCESS', we can use the current state to determine which sub-component to render (<Home> or <About>)
+Since the Application component gets its state from ApplicationStore, and ApplicationStore was updated when it handled the 'CHANGE_ROUTE_SUCCESS', we can use the current state to determine which sub-component to render (`<Home>` or `<About>`)
 
 Note: We're using the StoreMixin, which includes a handy `getStore()` method that knows how to get the correct store instance from the provided context.
+
+## Adding a NavBar
+- Create `<Nav>` component, to render our nav bar.
+- Modify `<Application>`, so it renders `<Nav>` above the content
+- Add a 'label' property to our urls, so we can use it inside `<Nav>`
+// To get styling
+- Create an `<HTML>` component, to render the base template for our app (including styles)
+- Modify server.js so it renders the app component inside the html component

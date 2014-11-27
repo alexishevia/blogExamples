@@ -2,11 +2,13 @@ module.exports = {
     home: {
         path: '/',
         method: 'get',
-        page: 'home'
+        page: 'home',
+        label: 'Home'
     },
     about: {
         path: '/about',
         method: 'get',
-        page: 'about'
+        page: 'about',
+        label: 'About'
     }
 };
