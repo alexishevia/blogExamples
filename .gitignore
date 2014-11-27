@@ -1,3 +1,6 @@
 *.swo
 *.swp
+*.log
 .DS_STORE
+node_modules
+build
