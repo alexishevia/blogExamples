@@ -6,6 +6,7 @@ var port = process.env.PORT || 3000;
 var navigateAction = require('flux-router-component').navigateAction;
 var React = require('react');
 var app = require('./app');
+var HtmlComponent = React.createFactory(require('./components/HTML.jsx'));
 
 server.use(function(req, res, next) {
   var context = app.createContext();
@@ -23,10 +24,11 @@ server.use(function(req, res, next) {
     }
 
     var AppComponent = app.getAppComponent();
-    var component = AppComponent({
-      context: context.getComponentContext()
-    });
-    var html = React.renderToString(component);
+    var html = React.renderToStaticMarkup(HtmlComponent({
+        markup: React.renderToString(AppComponent({
+            context: context.getComponentContext()
+        }))
+    }));
 
     res.send(html);
   });
