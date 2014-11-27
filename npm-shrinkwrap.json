@@ -212,6 +212,129 @@
         }
       }
     },
+    "flux-router-component": {
+      "version": "0.4.6",
+      "from": "flux-router-component@>=0.4.0 <0.5.0",
+      "resolved": "https://registry.npmjs.org/flux-router-component/-/flux-router-component-0.4.6.tgz",
+      "dependencies": {
+        "debug": {
+          "version": "2.1.1",
+          "from": "debug@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.1.1.tgz",
+          "dependencies": {
+            "ms": {
+              "version": "0.6.2",
+              "from": "ms@0.6.2",
+              "resolved": "https://registry.npmjs.org/ms/-/ms-0.6.2.tgz"
+            }
+          }
+        },
+        "object-assign": {
+          "version": "2.0.0",
+          "from": "object-assign@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-2.0.0.tgz"
+        },
+        "query-string": {
+          "version": "1.0.0",
+          "from": "query-string@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/query-string/-/query-string-1.0.0.tgz"
+        },
+        "setimmediate": {
+          "version": "1.0.2",
+          "from": "setimmediate@>=1.0.2 <2.0.0",
+          "resolved": "https://registry.npmjs.org/setimmediate/-/setimmediate-1.0.2.tgz"
+        }
+      }
+    },
+    "fluxible": {
+      "version": "0.2.0",
+      "from": "fluxible@*",
+      "resolved": "https://registry.npmjs.org/fluxible/-/fluxible-0.2.0.tgz",
+      "dependencies": {
+        "async": {
+          "version": "0.9.0",
+          "from": "async@>=0.9.0 <0.10.0",
+          "resolved": "https://registry.npmjs.org/async/-/async-0.9.0.tgz"
+        },
+        "debug": {
+          "version": "2.1.1",
+          "from": "debug@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.1.1.tgz",
+          "dependencies": {
+            "ms": {
+              "version": "0.6.2",
+              "from": "ms@0.6.2",
+              "resolved": "https://registry.npmjs.org/ms/-/ms-0.6.2.tgz"
+            }
+          }
+        },
+        "dispatchr": {
+          "version": "0.2.12",
+          "from": "dispatchr@>=0.2.5 <0.3.0",
+          "resolved": "https://registry.npmjs.org/dispatchr/-/dispatchr-0.2.12.tgz"
+        },
+        "object-assign": {
+          "version": "2.0.0",
+          "from": "object-assign@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-2.0.0.tgz"
+        },
+        "setimmediate": {
+          "version": "1.0.2",
+          "from": "setimmediate@>=1.0.2 <2.0.0",
+          "resolved": "https://registry.npmjs.org/setimmediate/-/setimmediate-1.0.2.tgz"
+        }
+      }
+    },
+    "fluxible-plugin-routr": {
+      "version": "0.2.1",
+      "from": "fluxible-plugin-routr@>=0.2.0 <0.3.0",
+      "resolved": "https://registry.npmjs.org/fluxible-plugin-routr/-/fluxible-plugin-routr-0.2.1.tgz",
+      "dependencies": {
+        "debug": {
+          "version": "2.1.1",
+          "from": "debug@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.1.1.tgz",
+          "dependencies": {
+            "ms": {
+              "version": "0.6.2",
+              "from": "ms@0.6.2",
+              "resolved": "https://registry.npmjs.org/ms/-/ms-0.6.2.tgz"
+            }
+          }
+        },
+        "routr": {
+          "version": "0.0.5",
+          "from": "routr@>=0.0.0 <0.1.0",
+          "resolved": "https://registry.npmjs.org/routr/-/routr-0.0.5.tgz",
+          "dependencies": {
+            "path-to-regexp": {
+              "version": "1.0.3",
+              "from": "path-to-regexp@>=1.0.0 <2.0.0",
+              "resolved": "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-1.0.3.tgz",
+              "dependencies": {
+                "isarray": {
+                  "version": "0.0.1",
+                  "from": "isarray@0.0.1",
+                  "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz"
+                }
+              }
+            },
+            "reverend": {
+              "version": "0.3.0",
+              "from": "reverend@>=0.3.0 <0.4.0",
+              "resolved": "https://registry.npmjs.org/reverend/-/reverend-0.3.0.tgz",
+              "dependencies": {
+                "path-to-regexp": {
+                  "version": "0.2.5",
+                  "from": "path-to-regexp@>=0.2.1 <0.3.0",
+                  "resolved": "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-0.2.5.tgz"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "node-jsx": {
       "version": "0.12.4",
       "from": "node-jsx@>=0.12.0 <0.13.0",
