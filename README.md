@@ -35,3 +35,12 @@ Note: We're using the StoreMixin, which includes a handy `getStore()` method tha
 // To get styling
 - Create an `<HTML>` component, to render the base template for our app (including styles)
 - Modify server.js so it renders the app component inside the html component
+
+## Client App
+- Add dehydrate and rehydrate functions to our ApplicationStore, to control how its serialized/deserialized.
+- Use express-state to expose current state to `res.local.state`, inside an `App` namespace. Current state is obtained by calling app.dehydrate(), which in turn calls dehydrate() on all stores registered with the app.
+- Modify the `<HTML>` component so it renders res.local.state.
+- Create client.js. It will create a new app instance, and rehydrate it with the state passed from the server.
+- Use webpack to compile/bundle the client. Modify `<HTML>` so it loads the bundled client.
+- Add a store listener on `<Application>` so it updates whenever the ApplicationStore changes (eg: when the user clicks on a link and the current route changes)
+- Add the RouterMixin to `<Application>` so the browser URL is updated correctly when the user visits a new route.

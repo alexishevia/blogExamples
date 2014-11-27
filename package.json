@@ -3,10 +3,11 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "dev": "./node_modules/.bin/nodemon -e js,jsx server"
+    "dev": "./node_modules/.bin/nodemon --ignore build/ -e js,jsx server & ./node_modules/.bin/webpack --watch"
   },
   "dependencies": {
     "express": "^4.3.2",
+    "express-state": "^1.2.0",
     "node-jsx": "^0.12.0",
     "react": "^0.12.0",
     "flux-router-component": "^0.4.x",
@@ -14,6 +15,8 @@
     "fluxible-plugin-routr": "^0.2.0"
   },
   "devDependencies": {
-    "nodemon": "^1.2.1"
+    "nodemon": "^1.2.1",
+    "webpack": "^1.4.12",
+    "jsx-loader": "^0.12.0"
   }
 }
