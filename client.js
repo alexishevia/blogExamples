@@ -1,4 +1,5 @@
 'use strict';
+require('./assets/todomvc-common/base.css');
 var React = require('react');
 var app = require('./app');
 var dehydratedState = window.App; // Sent from the server

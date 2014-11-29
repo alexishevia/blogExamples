@@ -23,7 +23,7 @@ var Application = React.createClass({
     return (
       <div>
         <Nav selected={this.state.currentPageName} links={this.state.pages} context={this.props.context}/>
-        {'home' === this.state.currentPageName ? <Home/> : <About/>}
+        {'home' === this.state.currentPageName ? <Home context={this.props.context}/> : <About/>}
       </div>
     );
   }
