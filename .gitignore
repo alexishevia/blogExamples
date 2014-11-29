@@ -1,6 +1,7 @@
 *.swo
 *.swp
 *.log
+.vimrc
 .DS_STORE
 node_modules
 build

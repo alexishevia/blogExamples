@@ -1,9 +1,12 @@
+var showTodos = require('../actions/showTodos');
+
 module.exports = {
     home: {
         path: '/',
         method: 'get',
         page: 'home',
-        label: 'Home'
+        label: 'Home',
+        action: showTodos
     },
     about: {
         path: '/about',

@@ -44,3 +44,30 @@ Note: We're using the StoreMixin, which includes a handy `getStore()` method tha
 - Use webpack to compile/bundle the client. Modify `<HTML>` so it loads the bundled client.
 - Add a store listener on `<Application>` so it updates whenever the ApplicationStore changes (eg: when the user clicks on a link and the current route changes)
 - Add the RouterMixin to `<Application>` so the browser URL is updated correctly when the user visits a new route.
+
+## Todos
+- Create services/todo.js to offer a CRUD service for todos. It will store everything in memory, but will use setTimeout to simulate calling a DB.
+- Add the Fetchr plugin to our app.js so it can connect to the todo service.
+- Register the todo service on server.js (It requires body-parser).
+- Create a TodoStore to handle app state for todos. Register the TodoStore with our app.js
+- Modify Home.jsx so it renders todos
+- Modify Application.jsx so it passes context to Home.jsx
+- Add some stylesheets to assets/todomvc-common and require it on client.js
+- Modify webpack.config.js so assets are bundled.
+
+This is the process when we visit the home page:
+1. A new request is made, server.js receives it.
+2. Our middleware creates a new context instance and calls context.executeAction(navigateAction), passing it the current route.
+2. navigateAction uses the routrPlugin to look for a matching route (home). Since we defined the showTodosAction as an action for the home route, the showTodosAction is executed.
+3. The showTodosAction uses the fetchr plugin to make a 'read' request on the todos service.
+4. After the read request succeeds, the showTodosAction dispatches a 'RECEIVE_TODOS_SUCCESS' action, with the todos that were returned.
+5. The 'RECEIVE_TODOS_SUCCESS' action is dispatched to all stores registered with the app.
+6. The TodoStore executes its _receiveTodos() method in response to the 'RECEIVE_TODOS_SUCCESS'. The _receiveTodos() method updates updates the TodoStore's local copy of todos.
+7. The showTodosAction calls its callback function, letting the NavigateAction know it can continue.
+8. The navigateAction emits the 'CHANGE_ROUTE_SUCCESS' action, which is dispatched to all stores registered with the app.
+9. ApplicationStore executes its handleNavigate() method in response to the 'CHANGE_ROUTE_SUCCESS' action. The handleNavigate() method will update the ApplicationStore state.
+10. Inside the executeAction callback, we'll create a new instance of our Application component, passing it the current context as a prop.
+11. We render the Application component as a string, and send the result as our response. 
+
+
+Notice: when we visit the About page, and then click on the Home page, an AJAX request will be made to read from the todos service.

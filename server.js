@@ -9,6 +9,18 @@ var HtmlComponent = React.createFactory(require('./components/Html.jsx'));
 var server = express();
 server.use('/public', express.static(__dirname + '/build'));
 
+var bodyParser = require('body-parser');
+server.use(bodyParser.json());
+
+// Get access to the fetchr plugin instance
+var fetchrPlugin = app.getPlugin('FetchrPlugin');
+
+// Register our todos REST service
+fetchrPlugin.registerService(require('./services/todo'));
+
+// Set up the fetchr middleware
+server.use(fetchrPlugin.getXhrPath(), fetchrPlugin.getMiddleware());
+
 var expressState = require('express-state');
 expressState.extend(server);
 
