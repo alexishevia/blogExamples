@@ -3,6 +3,9 @@ var React = require('react');
 var FluxibleMixin = require('fluxible').Mixin;
 var TodoStore = require('../stores/TodoStore');
 var TodoItem = require('./TodoItem');
+var createTodo = require('../actions/createTodo');
+
+var ENTER_KEY = 13;
 
 module.exports = React.createClass({
     mixins: [FluxibleMixin],
@@ -21,6 +24,22 @@ module.exports = React.createClass({
     },
     _onChange: function() {
         this.setState(this.getState());
+    },
+    handleNewTodoKeyDown: function (event) {
+        if (event.which !== ENTER_KEY) {
+            return;
+        }
+
+        event.preventDefault();
+
+        var text = this.refs.newField.getDOMNode().value.trim();
+
+        if (text) {
+            this.props.context.executeAction(createTodo, {
+                text: text
+            });
+            this.refs.newField.getDOMNode().value = '';
+        }
     },
     render: function(){
         var main;
@@ -48,6 +67,13 @@ module.exports = React.createClass({
             <div>
                 <header id="header">
                     <h1>todos</h1>
+                    <input
+                        ref="newField"
+                        id="new-todo"
+                        placeholder="What needs to be done?"
+                        onKeyDown={this.handleNewTodoKeyDown}
+                        autoFocus={true}
+                    />
                 </header>
                 {main}
             </div>
