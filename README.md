@@ -3,3 +3,4 @@ This repo holds source code for examples shown on [my blog](http://dev.alexishev
 - [Setting Up a Node.js Dev Environment with Puppet](https://github.com/alexishevia/blogExamples/tree/puppet_nodejs)
 - [Dynamically loading optimized require.js files](https://github.com/alexishevia/blogExamples/tree/dynamic_requirejs)
 - [Isomorphic apps with Backbone.js and React](https://github.com/alexishevia/blogExamples/tree/isomorphic_react)
+- [Isomorphic React + Flux using Yahoo's Fluxible](http://dev.alexishevia.com/2014/11/isomorphic-react-flux-using-yahoos.html)
