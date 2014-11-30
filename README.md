@@ -71,3 +71,8 @@ This is the process when we visit the home page:
 
 
 Notice: when we visit the About page, and then click on the Home page, an AJAX request will be made to read from the todos service.
+
+## Add Todos
+- Add actions/createTodo.js. Will be executed when the user tries to create a new todo from the UI.
+- Add `<input>` to Home.jsx, to allow user to add a todo. When the user clicks enter, createTodo is called.
+- Add handlers for the todo creation lifecycle on the TodoStore
