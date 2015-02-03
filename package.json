@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "dev": "./node_modules/.bin/nodemon --ignore build/ -e js,jsx server & ./node_modules/.bin/webpack --watch"
+    "dev": "./node_modules/.bin/nodemon --ignore build/ -e js,jsx server.js & ./node_modules/.bin/webpack --watch"
   },
   "dependencies": {
     "body-parser": "^1.6.4",
