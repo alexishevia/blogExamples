@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "node ./specs/e2e/run.js"
+    "test": "node ./specs/e2e/run.js",
+    "test:headless": "xvfb-run --server-args=\"-screen 0, 1366x768x24\" npm test"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
