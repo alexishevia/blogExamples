@@ -1,21 +1,41 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Match } from 'react-router'
+import Todos from './components/Todos';
+import { ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS } from './utils/constants';
+import {
+addTodo, clearCompleted, destroy, save, toggle, toggleAll
+} from './actions';
 
-class App extends Component {
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    // app state
+    this.state = {
+      todos: []
+    };
+
+    // actions
+    _.extend(this,
+             {addTodo, clearCompleted, destroy, save, toggle, toggleAll});
+
+    // constants
+    _.extend(this, {ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS});
+  }
+
+  _renderTodos(matchProps){
+    return (<Todos app={this} {...matchProps} />);
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <BrowserRouter>
+        <div className="todoapp">
+          <Match pattern="/" exactly render={this._renderTodos.bind(this)} />
+          <Match pattern="/:nowShowing" render={this._renderTodos.bind(this)} />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      </BrowserRouter>
     );
   }
 }
-
-export default App;
