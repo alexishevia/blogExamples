@@ -1,4 +1,4 @@
-This repo holds source code for examples shown on [my blog](http://dev.alexishevia.com/)
+This repo holds source code for examples shown on [my blog](https://medium.com/@alexishevia/)
 
 - [End to End testing with Selenium on NodeJS](https://github.com/alexishevia/blogExamples/tree/e2e_node)
 - [Setting Up a Node.js Dev Environment with Puppet](https://github.com/alexishevia/blogExamples/tree/puppet_nodejs)
