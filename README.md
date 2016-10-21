@@ -1,5 +1,6 @@
 This repo holds source code for examples shown on [my blog](https://medium.com/@alexishevia/)
 
+- [The simplest Flux implementation](https://github.com/alexishevia/blogExamples/tree/simple_flux)
 - [End to End testing with Selenium on NodeJS](https://github.com/alexishevia/blogExamples/tree/e2e_node)
 - [Setting Up a Node.js Dev Environment with Puppet](https://github.com/alexishevia/blogExamples/tree/puppet_nodejs)
 - [Dynamically loading optimized require.js files](https://github.com/alexishevia/blogExamples/tree/dynamic_requirejs)
