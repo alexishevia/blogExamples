@@ -35,3 +35,5 @@ npm-debug.log
 
 # Other
 .env
+.env.yml
+.serverless
