@@ -22,6 +22,11 @@ This is the source code for my [Deploying an Express Application to AWS Lambda, 
   npm run db:migrate:dev
   ```
 
+6. Start the app:
+  ```
+  npm start
+  ```
+
 ## Deploying the app
 1. Edit your `.env.yml` file:
   - replace `accessKeyId` and `secretAccessKey` with your AWS keys (you can get AWS Keys by following this guide: https://serverless.com/framework/docs/providers/aws/setup/).
