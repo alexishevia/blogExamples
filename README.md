@@ -1,4 +1,4 @@
-# Writing a RESTful API with Express & MassiveJS
+# Deploying an Express Application to AWS Lambda, the easy way
 This is the source code for my [Deploying an Express Application to AWS Lambda, the easy way](https://medium.com/trisfera/deploying-an-express-application-to-aws-lambda-the-easy-way-fa5fbef190ba) post, where I show how to deploy an existing Express app to AWS Lambda.
 
 ## Getting Started
