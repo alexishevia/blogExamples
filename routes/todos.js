@@ -1,11 +1,19 @@
 var express = require('express');
 var router = express.Router();
+var debug = require('debug');
 
 // INDEX todos
 router.get('/', function(req, res, next){
+  var _debug = debug('faruApi:todos:index');
+  _debug('START');
+
   req.app.get('db').todo.find(
   function(err, result){
-    if(err){ return next(err); }
+    if(err){
+      _debug('ERROR', err);
+      return next(err);
+    }
+    _debug('SUCCESS', result);
     res.status(200).type('json')
        .send(JSON.stringify(result));
   });

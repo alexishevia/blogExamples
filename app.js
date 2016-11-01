@@ -1,9 +1,21 @@
 'use strict';
 
-require('dotenv').config();
+var path = require('path');
+
+/*
+ * On production, a .env file is created from .env.yml and parsed by dotenv.
+ * For development, we just extend process.env manually
+ */
+if(process.env.NODE_ENV === 'development'){
+  const YAML = require('yamljs')
+  const config = YAML.load(path.join(__dirname, '.env.yml'))
+  Object.assign(process.env, config.development)
+}
+else {
+  require('dotenv').config()
+}
 
 var express = require('express');
-var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -20,15 +32,10 @@ app.set('db', massive.connectSync({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/todos', require('./routes/todos'));
 
@@ -62,6 +69,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

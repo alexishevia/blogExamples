@@ -9,6 +9,7 @@ custom:
   writeEnvVars:
     NODE_ENV: ${file(./.env.yml):${opt:stage}.NODE_ENV}
     DATABASE_URL: ${file(./.env.yml):${opt:stage}.DATABASE_URL}
+    DEBUG: ${file(./.env.yml):${opt:stage}.DEBUG}
 
 plugins:
   - serverless-plugin-write-env-vars
