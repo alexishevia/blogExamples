@@ -11,8 +11,7 @@ router.post('/sessions', function(req, res, next){
     }
     // you could construct a JWT or a session here instead of
     // returning the user object
-    res.status(201).type('json')
-       .send(JSON.stringify(result[0]));
+    res.status(201).json(result[0]);
   });
 });
 
@@ -21,8 +20,7 @@ router.post('/', function(req, res, next){
   req.app.get('db').createUser([req.body.email, req.body.password],
   function(err, result){
     if(err){ return next(err); }
-    res.status(201).type('json')
-       .send(JSON.stringify(result[0]));
+    res.status(201).json(result[0]);
   });
 });
 
