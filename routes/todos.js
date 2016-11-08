@@ -6,8 +6,7 @@ router.get('/', function(req, res, next){
   req.app.get('db').todo.find(
   function(err, result){
     if(err){ return next(err); }
-    res.status(200).type('json')
-       .send(JSON.stringify(result));
+    res.json(result);
   });
 });
 
@@ -17,8 +16,7 @@ router.post('/', function(req, res, next) {
     text: req.body.text
   }, function(err, result){
     if(err){ return next(err); }
-    res.status(201).type('json')
-       .send(JSON.stringify(result));
+    res.status(201).json(result);
   });
 });
 
@@ -32,8 +30,7 @@ router.put('/:id', function(req, res, next) {
     else if(!result){
       return res.status(404).send('Not Found');
     }
-    res.status(200).type('json')
-       .send(JSON.stringify(result));
+    res.json(result);
   });
 });
 
@@ -47,8 +44,7 @@ router.delete('/:id', function(req, res, next) {
     else if(!result){
       return res.status(404).send('Not Found');
     }
-    res.status(200).type('json')
-       .send(JSON.stringify(result));
+    res.json(result);
   });
 });
 
