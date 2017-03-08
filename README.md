@@ -1,6 +1,6 @@
 # Using CORS in Express
 This is an example application that uses the concepts explained on my [Using
-CORS in Express](https://medium.com/trisfera/) blog post.
+CORS in Express](https://medium.com/@alexishevia/using-cors-in-express-cac7e29b005b) blog post.
 
 ## Getting Started
 The example is made up of 2 individual applications: `backend/` and `frontend/`.
